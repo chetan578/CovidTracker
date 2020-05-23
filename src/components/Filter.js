@@ -1,14 +1,18 @@
 import React from 'react'
+import '../styles.css'
+import {InputGroup,FormControl} from 'react-bootstrap'
 
 const Filter=({filtername,setFilterName})=>{
-
 return (
-    <div>
-      Filter: <input type='text'
-      value={filtername}
-      name='filter'
-      onChange={setFilterName}/>  
-    </div>
+  <InputGroup className="mb-1" onChange={setFilterName} style={{width:'18rem'}}>
+    <InputGroup.Prepend>
+      <InputGroup.Text id="inputGroup-sizing-default">Filter</InputGroup.Text>
+    </InputGroup.Prepend>
+    <FormControl
+      aria-label="Default"
+      aria-describedby="inputGroup-sizing-default"
+    />
+  </InputGroup>
 )
 }
 
