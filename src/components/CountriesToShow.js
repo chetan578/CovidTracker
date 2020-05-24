@@ -51,7 +51,7 @@ setVisibility(true)
   </Container>
 </Jumbotron>
  {countries.map((x,idx)=>
-        <Card  key={idx} style={{marginBottom:'50px',padding:'2px'}}>
+        <Card  key={idx} style={{margin:'50px auto',padding:'2px'}}>
   <Card.Header style={{fontSize:'30px'}}><Link to={`/countries/${x.Country}`}>{x.Country}</Link></Card.Header>
   <ListGroup variant="flush">
     <ListGroup.Item>Total Cases : {x.TotalConfirmed}</ListGroup.Item>

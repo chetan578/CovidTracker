@@ -40,8 +40,9 @@ helpline=helpline.filter(x=>x.state.toLowerCase().includes(filter.toLowerCase())
 return(
     <div>
         <h1>Helpline</h1>
+        <h4 style={{position:'relative'}}>Click on category for more details</h4>
        <h3> Filter By State Name:</h3>
-        <input type='text' value={filter} 
+        <input style={{position:'relative'}} type='text' value={filter} 
         onChange={handleFilter}/>
          <Table striped bordered hover >
             <tbody>
@@ -52,7 +53,7 @@ return(
          <th>Name of the Organisation</th>
          <th>Contact Details</th>
        </tr>
-            {helpline.slice(0,10).map((x,id)=>
+            {helpline.slice(0,100).map((x,id)=>
                    <tr key={id}>
                     <PopOver Id={x.recordid} helpline={helpline}/>   
                     <td>{x.city}</td>

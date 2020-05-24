@@ -19,7 +19,7 @@ const News=({setVisibility})=>{
         <h1>News Updates </h1>
         <CardDeck>
         {news.slice(0,4).map((x,inc)=>
-        <Card key={inc} style={{padding:'2px',marginBottom:'20px',marginTop:'10px'}}>
+        <Card key={inc} style={{padding:'2px',marginBottom:'20px auto',marginTop:'10px'}}>
         <Card.Header>{x.published.slice(0,12)}</Card.Header>
         <Card.Body>
           <Card.Title>{x.title}</Card.Title>
