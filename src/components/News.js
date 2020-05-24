@@ -5,7 +5,6 @@ import {Card,Button,CardDeck} from 'react-bootstrap'
 
 
 const News=({setVisibility})=>{
-  // setshowFilter(false)
     let [news,setNews]=useState([])   
     setVisibility(false)
     useEffect(()=>{
@@ -17,9 +16,9 @@ const News=({setVisibility})=>{
     return(
     <div>
         <h1>News Updates </h1>
-        <CardDeck>
+        <CardDeck style={{margin:'auto'}}> 
         {news.slice(0,4).map((x,inc)=>
-        <Card key={inc} style={{padding:'2px',marginBottom:'20px auto'}}>
+        <Card key={inc} style={{padding:'2px',margin:'20px auto'}}>
         <Card.Header>{x.published.slice(0,12)}</Card.Header>
         <Card.Body>
           <Card.Title>{x.title}</Card.Title>
