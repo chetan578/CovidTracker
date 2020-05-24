@@ -3,7 +3,6 @@ import axios from 'axios'
 import {Table,Popover,OverlayTrigger} from 'react-bootstrap'
 
 const PopOver=({Id,helpline})=>{
-    console.log(helpline)
 const result=helpline.find(n=>n.recordid===Id)
     const popover =(
         <Popover id="popover-basic">
@@ -22,18 +21,18 @@ return(
 
 }
 
-const Helpline=()=>{
+const Helpline=({setVisibility})=>{
 let [helpline,setHelpline]=useState([])
 const [filter,setFilter]=useState('')
-
+setVisibility(false)
 useEffect(()=>{
 axios.get('https://api.covid19india.org/resources/resources.json').then(response=>{
     setHelpline(response.data.resources)
 })
+
 },[])
 
 const handleFilter=(event)=>{
-console.log(event.target.value)
 setFilter(event.target.value)
 }
 helpline=helpline.filter(x=>x.state.toLowerCase().includes(filter.toLowerCase()))

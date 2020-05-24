@@ -27,6 +27,7 @@
   input[type=text] {
     width: 100px;
     padding:6px;
+    position: relative;
     -webkit-transition: width 0.6s ease-in-out;
     transition: width 0.4s ease-in-out;
     box-shadow:2px 4px violet;

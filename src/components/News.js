@@ -4,9 +4,10 @@ import axios from 'axios'
 import {Card,Button,CardDeck} from 'react-bootstrap'
 
 
-const News=()=>{
+const News=({setVisibility})=>{
   // setshowFilter(false)
     let [news,setNews]=useState([])   
+    setVisibility(false)
     useEffect(()=>{
     axios.get('https://covid19-us-api.herokuapp.com/news').then(response=>{
         setNews(response.data.message)

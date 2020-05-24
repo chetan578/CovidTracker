@@ -14,9 +14,10 @@ const SelectedCountry=({selectedCountry})=>{
     )
 }
 
-const ShowSingleCountry=()=>{
+const ShowSingleCountry=({setVisibility})=>{
     
     let [country,setCountry]=useState([])
+    setVisibility(false)
     const id=useParams().id
     useEffect(()=>{
         axios.get(`https://api.covid19api.com/country/${id}`).then(response=>{
