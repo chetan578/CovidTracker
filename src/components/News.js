@@ -27,9 +27,9 @@ const News=({setVisibility})=>{
       </Card>
         )}
         </CardDeck>
-        <CardDeck>
+        <CardDeck style={{margin:'auto'}}>
         {news.slice(4,8).map((x,inc)=>
-        <Card key={inc} style={{padding:'2px',marginBottom:'20px',marginTop:'10px'}}>
+        <Card key={inc} style={{padding:'2px',margin:'20px auto'}}>
         <Card.Header>{x.published.slice(0,12)}</Card.Header>
         <Card.Body>
           <Card.Title>{x.title}</Card.Title>
@@ -38,9 +38,9 @@ const News=({setVisibility})=>{
       </Card>
         )}
         </CardDeck>
-        <CardDeck>
+        <CardDeck style={{margin:'auto'}}>
         {news.slice(8,12).map((x,inc)=>
-        <Card key={inc} style={{padding:'2px',marginBottom:'20px',marginTop:'10px'}}>
+        <Card key={inc} style={{padding:'2px',margin:'20px auto'}}>
         <Card.Header>{x.published.slice(0,12)}</Card.Header>
         <Card.Body>
           <Card.Title>{x.title}</Card.Title>
