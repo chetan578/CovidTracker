@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {useParams } from 'react-router-dom'
 import {Table} from 'react-bootstrap'
+import {LineChart,CartesianGrid,XAxis,YAxis,Tooltip,Line} from 'recharts'
+
 
 const SelectedCountry=({selectedCountry})=>{
     return(
@@ -17,7 +19,10 @@ const SelectedCountry=({selectedCountry})=>{
 const ShowSingleCountry=({setVisibility})=>{
     
     let [country,setCountry]=useState([])
-    setVisibility(false)
+    useEffect(()=>{
+setVisibility(false)
+    })
+    
     const id=useParams().id
     useEffect(()=>{
         axios.get(`https://api.covid19api.com/country/${id}`).then(response=>{
@@ -25,12 +30,22 @@ const ShowSingleCountry=({setVisibility})=>{
             }
         )
     },[id])
-    country=country.reverse()
 
     return(
         <div>
-             <h1>{id}</h1>
-            <Table striped bordered hover >
+             <h1>{id}</h1>          
+  <LineChart width={1000} height={700} data={country} >
+    <Line type="monotone" dataKey="Confirmed" stroke="#8884d8" />
+    <CartesianGrid  strokeDasharray="3 3"/>
+    <XAxis dataKey='Date' >
+    </XAxis>
+    <YAxis >
+    </YAxis>
+    <Tooltip />
+  </LineChart>
+
+
+            <Table striped bordered hover style={{position:'relative'}}>
             <tbody>
             <tr>
         <th>Date</th>
@@ -38,7 +53,7 @@ const ShowSingleCountry=({setVisibility})=>{
          <th>Confirmed Deaths</th>
          <th>Confirmed Recovered</th>
        </tr>
-            {country.slice(0,50).map((selectedCountry,id)=>
+            {country.reverse().map((selectedCountry,id)=>
                     <SelectedCountry key= {id} selectedCountry={selectedCountry}/>
             )}
                 </tbody>

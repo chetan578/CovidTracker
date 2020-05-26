@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Link } from 'react-router-dom'
 import Donation from './Donation'
 import {Card,ListGroup,ProgressBar,Container,Jumbotron,Tab,Row,Col,Button,Nav} from 'react-bootstrap'
 
-const CountriesToShow=({countries,filtername,setVisibility})=>{
-setVisibility(true)
 
+const CountriesToShow=({filtername,countries,setVisibility})=>{
+
+  useEffect(()=>{
+setVisibility(true)
+  })
+ 
   countries= countries.filter(x=>x.Country.toLowerCase().includes(filtername.toLowerCase()))
 
 

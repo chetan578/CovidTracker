@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import {Table} from 'react-bootstrap'
 import axios from 'axios'
 
-
-const TestingData=({setVisibility})=>{
+const TestingData=()=>{
 let [testingData,settestingData]=useState([])
-setVisibility(false)
+
+
 
 useEffect(()=>{
 axios.get('https://api.covid19india.org/data.json').then(response=>{

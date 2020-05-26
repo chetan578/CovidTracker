@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import {Table} from 'react-bootstrap'
 import axios from 'axios'
 
-
 const States=({setVisibility})=>{
 const [stateData,setStateData]=useState([])
-setVisibility(false)
+useEffect(()=>{
+    setVisibility(false)
+})
+
 useEffect(()=>{
 axios.get('https://api.covid19india.org/data.json').then(response=>{
     setStateData(response.data.statewise)

@@ -7,15 +7,16 @@ import States from './components/States'
 import TestingData from './components/TestingData'
 import News from './components/News'
 import Helpline from './components//Helpline'
+import {useFilter} from './CustomHooks/FilterHook'
 import {BrowserRouter as Router ,Switch,Route,Link} from 'react-router-dom'
 import {Navbar,Nav} from 'react-bootstrap'
 
 
-const FilterToHide=({filtername,handleFilter})=>{
+const FilterToHide=({handleFilter})=>{
   return(
   <Nav>
   <Nav.Link  className="mr-sm-2">
-  <Filter filtername={filtername} setFilterName={handleFilter} />
+  <Filter  setFilterName={handleFilter}/>
   </Nav.Link>
 </Nav>
   )
@@ -23,18 +24,18 @@ const FilterToHide=({filtername,handleFilter})=>{
 
 const App=()=>{
  const [countries,setCountries]=useState([])
- const [filtername,setFilterName]=useState('')
  const [visibility,setVisibility]=useState(true)
-
+ const f= useFilter()
 useEffect(()=>{
    axios.get('https://api.covid19api.com/summary').then(res=>{
       setCountries(res.data.Countries)
     })
   },[])
 
-const handleFilter=(event)=>{
-  setFilterName(event.target.value)
-}
+  // const handleFilter=(event)=>{
+  //   setFilterName(event.target.value)
+  // }
+
 console.log(countries.length)
 const padding = {
   paddingRight: 5
@@ -61,7 +62,7 @@ const padding = {
         <Link style={padding} to="/india/helpline">HELPLINE</Link>
       </Nav.Link>
       </Nav>
-      {visibility===true?<FilterToHide filtername={filtername} handleFilter={handleFilter}/>:''}
+      {visibility===true?<FilterToHide  handleFilter={f.handleFilter} />:''}
   </Navbar.Collapse>
 </Navbar>
 
@@ -83,7 +84,7 @@ const padding = {
             <ShowSingleCountry setVisibility={setVisibility}/>
           </Route>
         <Route path='/'>
-      <CountriesToShow setVisibility={setVisibility} filtername={filtername} countries={countries}/>
+      <CountriesToShow setVisibility={setVisibility} filtername={f.filtername} countries={countries}/>
         </Route>
         </Switch>
       </Router>
